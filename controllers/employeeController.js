@@ -1,6 +1,7 @@
 
 const Employee = require('../models/Employee');
 
+//Create student
 const createEmployee = async (req, res) => {
     try {
         const { name, email, phone, city } = req.body
@@ -19,6 +20,7 @@ const createEmployee = async (req, res) => {
     }
 }
 
+// Get all employees
 const getEmployees = async (req, res) => {
     try {
         const employees = await Employee.find();
@@ -29,6 +31,7 @@ const getEmployees = async (req, res) => {
     }
 }
 
+//Get single employee
 const singleEmployee = async (req, res) => {
     try {
         const employee = await Employee.findById(req.params.id);
@@ -41,7 +44,7 @@ const singleEmployee = async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 }
-
+//Update Employee
 const updateEmployee = async (req, res) => {
     try {
         const { name, email, phone, city } = req.body
@@ -60,7 +63,7 @@ const updateEmployee = async (req, res) => {
         res.status(500).json({ message: "Server Error" });
     }
 }
-
+//Delete employee
 const deleteEmployee = async (req, res) => {
     try {
         const deleteEmployee = await Employee.findByIdAndDelete(req.params.id)
